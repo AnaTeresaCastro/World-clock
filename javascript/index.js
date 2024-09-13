@@ -17,16 +17,20 @@ function showTime() {
     .tz("Europe/Paris")
     .format("h:mm:ss [<small>]A[</small>]");
 }
-setInterval(showTime, 1000);
 
 function showTimeCity(event) {
+  let cityTimezone = event.target.value;
+  if (cityTimezone === "current") {
+    cityTimezone = moment.tz.guess();
+  }
+
+  let cityName = cityTimezone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimezone);
   let citySearch = document.querySelector("#cities");
-  let cityName = event.target.value.replace("_", " ").split("/")[1];
-  let cityTz = moment().tz(event.target.value);
   citySearch.innerHTML = `<h2>${cityName}</h2>
-        <div class="city" id="los-angeles">
-          <div class="date">${cityTz.format("MMMM Do YYYY")}</div>
-          <div class="time">${cityTz.format(
+        <div class="city">
+          <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+          <div class="time">${cityTime.format(
             "h:mm:ss [<small>]A[</small>]"
           )}</div>
         </div>`;
@@ -34,3 +38,6 @@ function showTimeCity(event) {
 
 let selectElement = document.querySelector("#city");
 selectElement.addEventListener("change", showTimeCity);
+
+showTime();
+setInterval(showTime, 1000);
