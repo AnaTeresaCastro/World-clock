@@ -28,8 +28,8 @@ select {
 .city {
   display: flex;
   justify-content: space-between;
-
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
 }
 .city:last-child {
   border: none;
