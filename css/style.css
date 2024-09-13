@@ -25,13 +25,13 @@ select {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 30px;
 }
-.city-details {
+.city {
   display: flex;
   justify-content: space-between;
 
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
 }
-.city-details:last-child {
+.city:last-child {
   border: none;
 }
 .time {
